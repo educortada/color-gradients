@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Card from './components/Card';
+import dataGradients from './data/gradients'
+
 class App extends Component {
+
+  renderCards() {
+    return (
+      dataGradients.map((item, index) => {
+        return <Card key={`id-${index}`} colorFrom={item[0]} colorTo={item[1]} />
+      })
+    )
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <main>
+          <section className="cards">
+            {this.renderCards()}
+          </section>
+        </main>
       </div>
     );
   }
